@@ -13,6 +13,19 @@ namespace WaterProject.API.Controllers
 
         [HttpGet("AllProjects")]
         public IActionResult GetProjects(int pageSize = 10, int pageNum = 1) {
+
+            string? favProjType = Request.Cookies["FavoriteProjectType"];
+            Console.WriteLine("~~~~~~~COOKIES~~~~~~~\n" + favProjType);
+
+            HttpContext.Response.Cookies.Append("FavoriteProjectType", "Borehole Well and Hand Pump", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.Now.AddMinutes(1)
+            });
+
+
             var something = _waterContext.Projects
             .Skip((pageNum - 1) * pageSize)
             .Take(pageSize)
