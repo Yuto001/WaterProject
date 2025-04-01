@@ -14,16 +14,15 @@ builder.Services.AddDbContext<WaterDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("WaterConnection")));
 
 builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowFrontend",
+
+    options.AddPolicy("AllowReactAppBlah",
        policy =>
     {
         policy.WithOrigins("http://localhost:3000")
-        .AllowCredentials()
+        //.AllowCredentials()
         .AllowAnyHeader()
         .AllowAnyMethod();
-    });
-});
+    }));
 
 var app = builder.Build();
 
@@ -34,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowFrontend");
+app.UseCors("AllowReactAppBlah");
 
 app.UseHttpsRedirection();
 
