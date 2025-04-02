@@ -1,6 +1,6 @@
 import { getFingerprint } from '@thumbmarkjs/thumbmarkjs';
 import { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
+//import { useFormState } from 'react-dom';
 
 export const Fingerprint = () => {
   const [fingerprint, setFingerprint] = useState<string | null>(null);

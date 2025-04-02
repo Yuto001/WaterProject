@@ -1,10 +1,10 @@
-import CookieConsent from 'react-cookie-consent';
+//import CookieConsent from 'react-cookie-consent';
 import './App.css';
-import Fingerprint from './Fingerprint';
+//import Fingerprint from './Fingerprint';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PrivacyPolicy from './PrivacyPolicy';
+//import PrivacyPolicy from './PrivacyPolicy';
 
-import { useState } from 'react';
+//import { useState } from 'react';
 import ProjectsPage from './pages/ProjectsPage';
 import DonatePage from './pages/DonatePage';
 import CartPage from './pages/CartPage';
