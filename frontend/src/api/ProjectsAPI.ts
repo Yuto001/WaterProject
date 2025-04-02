@@ -18,10 +18,10 @@ export const fetchProjects = async (
       .join('&');
 
     const response = await fetch(
-      `${API_URL}/AllProjects?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`,
-      {
-        credentials: 'include',
-      }
+      `${API_URL}/AllProjects?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`
+      //{
+      //  credentials: 'include',
+      //}
     );
 
     if (!response.ok) {
@@ -51,6 +51,41 @@ export const addProject = async (newProject: Project): Promise<Project> => {
     return await response.json();
   } catch (error) {
     console.error('Error adding project', error);
+    throw error;
+  }
+};
+
+export const updateProject = async (
+  projectId: number,
+  updatedProject: Project
+): Promise<Project> => {
+  try {
+    const response = await fetch(`${API_URL}/UpdateProject/${projectId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedProject),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating project:', error);
+    throw error;
+  }
+};
+
+export const deleteProject = async (projectId: number): Promise<void> => {
+  try {
+    const response = await fetch(`${API_URL}/DeleteProject/${projectId}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete project');
+    }
+  } catch (error) {
+    console.error('Error deleting project:', error);
     throw error;
   }
 };

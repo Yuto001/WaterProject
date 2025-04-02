@@ -61,7 +61,7 @@ namespace WaterProject.API.Controllers
             return Ok(projectTypes);
         }
 
-        [HttpPost("Add")]
+        [HttpPost("AddProject")]
         public IActionResult AddProject([FromBody]Project newProject)
         {
             _waterContext.Projects.Add(newProject);
