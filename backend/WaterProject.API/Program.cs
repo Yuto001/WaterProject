@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactAppBlah",
        policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:3000", "https://happy-cliff-0e67f2d1e.6.azurestaticapps.net")
         //.AllowCredentials()
         .AllowAnyHeader()
         .AllowAnyMethod();
